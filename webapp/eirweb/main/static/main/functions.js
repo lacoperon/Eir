@@ -59,3 +59,14 @@ function sendInstruction() {
       },
     });
 }
+
+// Updates the images.
+function updateImages() {
+    $.ajax({
+        type: "GET",
+        url: '/api/images',
+        success: function(data) {
+            alert(data);
+        }
+    });
+}

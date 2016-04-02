@@ -1,7 +1,7 @@
 from base64 import b64decode
 
 from PIL import Image as PILImage
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -27,10 +27,24 @@ def get_latest_instruction(request):
 
 
 def get_image(request):
-    id = request.GET.get('id')
-    image = Image.objects.get(pk=id)
-    with open(image.filename, 'rb') as f:
-        return HttpResponse(f.read(), content_type="png")
+    id = request.GET.get('id', None)
+    if id is None:
+        # Return all images relevant images
+        images = Image.get_relevant_images()
+
+        # Transfer images to json
+        images_data = []
+        for image in images:
+            im_dic = {
+                'path': '/image?id=%d' % image.id
+            }
+            images_data.append(im_dic)
+        return JsonResponse({'images': images_data})
+    else:
+        # Return the image
+        image = Image.objects.get(pk=id)
+        with open(image.filename, 'rb') as f:
+            return HttpResponse(f.read(), content_type="png")
 
 
 @csrf_exempt
@@ -61,6 +75,8 @@ def create_new_instruction(request):
     return HttpResponse(status=200)
 
 
+def reset(request):
+    Instruction.objects.all().delete()
 
 
 
