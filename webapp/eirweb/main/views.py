@@ -82,6 +82,8 @@ def add_drawing(request):
 
 
 def main_app(request):
-    context = None
+    context = {
+        'images': Image.get_relevant_images()
+    }
     return TemplateResponse(request, "main/main_app.html", context)
 

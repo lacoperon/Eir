@@ -59,8 +59,8 @@
                       <div id="lc"></div>
                   </div>
                   <div class="col-md-6">
-                      {% for image in Images.get_relevant_images() %}
-                        <img src="{{  }}">
+                      {% for image in images %}
+                        <img width="200px" src="/image?id={{ image.id }}" onclick="initializeDrawing('/image?id={{ image.id }}')">
                       {% endfor %}
                   </div>
               </div>
@@ -82,11 +82,8 @@
     <script src="{% static "main/canvas/literallycanvas.js" %}"></script>
 
     <script type="text/javascript">
-        var lc = LC.init(document.getElementById("lc"), {
-            imageURLPrefix: '{% static "main/canvas/lc-images" %}',
-            toolbarPosition: 'bottom',
-            defaultStrokeWidth: 2,
-            strokeWidths: [1, 2, 3, 5, 30]
+        $(document).ready(function() {
+            initializeDrawing(null);
         });
     </script>
   </body>
