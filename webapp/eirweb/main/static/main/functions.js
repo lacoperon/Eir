@@ -36,4 +36,15 @@ function initializeDrawing(backgroundImage) {
 
 
     lc = LC.init(new_div, parameters);
+
+    // Register event handlers
+    var pointerupListener = lc.on('drawingChange', function() {
+        // Send new image to server.
+        sendInstruction();
+    });
+}
+
+// Sends the current instruction to the server.
+function sendInstruction() {
+
 }
