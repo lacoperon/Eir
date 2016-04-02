@@ -1,0 +1,5 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/big_red_pressed"/>
+    <item android:state_pressed="false" android:drawable="@drawable/big_red_normal"/>
+    <item android:drawable="@drawable/big_red_normal"/>
+</selector><!-- From: file:/Users/carengarcia/Downloads/sinch-android-rtc-3.8.0-VIDEO-SNAPSHOT/samples/sinch-rtc-sample-video/res/drawable/button_end.xml -->
