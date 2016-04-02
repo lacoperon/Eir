@@ -51,8 +51,11 @@ class Drawing(models.Model):
     shape = models.TextField(max_length=40)
 
     # Location on the image
-    location_x = models.IntegerField()
-    location_y = models.IntegerField()
+    x1 = models.IntegerField()
+    y1 = models.IntegerField()
+
+    x2 = models.IntegerField()
+    y2 = models.IntegerField()
 
     # The instruction to which this thing belongs to.
     instruction = models.ForeignKey(Instruction)
@@ -64,5 +67,5 @@ class Drawing(models.Model):
 
         # Just draw a line for the moment.
         im = ImageDraw.Draw(image)
-        im.line((0, 0, 100, 100), fill=128)
+        im.line((self.x1, self.y1, self.x2, self.y2), fill=128)
 
