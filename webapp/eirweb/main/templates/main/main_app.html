@@ -58,10 +58,7 @@
                   <div class="col-md-6">
                       <div id="lc"></div>
                   </div>
-                  <div class="col-md-6">
-                      {% for image in images %}
-                        <img width="200px" src="/image?id={{ image.id }}" onclick="initializeDrawing('/image?id={{ image.id }}')">
-                      {% endfor %}
+                  <div class="col-md-6" id="thumbnails">
                   </div>
               </div>
           </div>

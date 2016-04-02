@@ -5,6 +5,8 @@ from django.http import HttpResponse, JsonResponse
 from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_exempt
 
+import os
+
 from main.models import Instruction, Image
 
 
@@ -79,7 +81,22 @@ def reset(request):
     Instruction.objects.all().delete()
 
 
+def update_images(request):
+    """
+    Rereads the images from
+    :param request:
+    :return:
+    """
+    Image.objects.all().delete()
 
+    files = os.listdir('images')
+    files = [f for f in files if f[-3:] == 'png']
+    for f in files:
+        image = Image()
+        image.filename = 'images/%s' % f
+        image.save()
+
+    return HttpResponse("Update images (Count: %d)" % len(files))
 
 
 def main_app(request):

@@ -42,6 +42,8 @@ function initializeDrawing(backgroundImage) {
         // Send new image to server.
         sendInstruction();
     });
+
+    updateImages();
 }
 
 // Sends the current instruction to the server.
@@ -64,9 +66,19 @@ function sendInstruction() {
 function updateImages() {
     $.ajax({
         type: "GET",
-        url: '/api/images',
+        url: '/images',
         success: function(data) {
-            alert(data);
+            $('#thumbnails').empty();
+
+            for (var i=0; i < data['images'].length; i++) {
+                image = data['images'][i];
+                path = image['path']
+                $('#thumbnails').append('<img src="'+ path +'" width="200px" onclick="initializeDrawing(\''+ path +'\')">')
+            }
+
+        },
+        error: function(xhr, status, error) {
+            alert(error);
         }
     });
 }
