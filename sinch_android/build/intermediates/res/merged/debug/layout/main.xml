@@ -14,26 +14,7 @@
             android:paddingLeft="40dp"
             android:paddingRight="40dp" android:id="@+id/numberInputLayout">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="Enter recipient name"
-                android:textAllCaps="true"
-                android:id="@+id/textView" android:layout_gravity="center_horizontal"
-                android:textColor="@color/sinch_purple" android:textSize="20sp"/>
-        <EditText
-                android:id="@+id/callName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="32sp"
-                android:padding="10dp"
-                android:textColor="@color/sinch_purple"
-                android:background="@drawable/inputbox" android:inputType="textNoSuggestions">
 
-            <requestFocus/>
-        </EditText>
 
     </LinearLayout>
 

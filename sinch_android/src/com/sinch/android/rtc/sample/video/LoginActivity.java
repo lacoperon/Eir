@@ -3,8 +3,11 @@ package com.sinch.android.rtc.sample.video;
 import com.sinch.android.rtc.SinchError;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,28 +19,57 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
     private Button mLoginButton;
     private EditText mLoginName;
     private ProgressDialog mSpinner;
+    private String MyUser;
+    SharedPreferences sharedPreferences;
+    private boolean newUser = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        sharedPreferences = getSharedPreferences(Utilities.MY_PREFS, Context.MODE_PRIVATE);
+        MyUser = sharedPreferences.getString(Utilities.MY_USER_NAME, "");
+        Log.d("app", MyUser + " -is my user");
 
-        mLoginName = (EditText) findViewById(R.id.loginName);
+        if (MyUser== "")
+        {
+            mLoginName = (EditText) findViewById(R.id.loginName);
 
-        mLoginButton = (Button) findViewById(R.id.loginButton);
-        mLoginButton.setEnabled(false);
-        mLoginButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginClicked();
-            }
-        });
+            mLoginButton = (Button) findViewById(R.id.loginButton);
+            mLoginButton.setEnabled(false);
+            mLoginButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loginClicked();
+                }
+            });
+
+        }
+        else
+            newUser = false;
+
+
     }
 
     @Override
     protected void onServiceConnected() {
-        mLoginButton.setEnabled(true);
         getSinchServiceInterface().setStartListener(this);
+        if (newUser == true)
+        {
+            mLoginButton.setEnabled(true);
+        }
+        else
+        {
+            if (!getSinchServiceInterface().isStarted()) {
+                getSinchServiceInterface().startClient(MyUser);
+                showSpinner();
+            } else {
+
+                openPlaceCallActivity();
+
+            }
+        }
+
     }
 
     @Override
@@ -73,13 +105,19 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
             getSinchServiceInterface().startClient(userName);
             showSpinner();
         } else {
+
             openPlaceCallActivity();
+
         }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Utilities.MY_USER_NAME, userName);
+        editor.commit();
     }
 
     private void openPlaceCallActivity() {
         Intent mainActivity = new Intent(this, PlaceCallActivity.class);
         startActivity(mainActivity);
+        finish();
     }
 
     private void showSpinner() {
