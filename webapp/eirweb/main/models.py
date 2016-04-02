@@ -1,5 +1,5 @@
 from django.db import models
-from PIL import Image, ImageDraw
+from PIL import ImageDraw
 from PIL import Image as PILImage
 
 
@@ -11,8 +11,22 @@ class Image(models.Model):
     # The filename of the image
     filename = models.FilePathField()
 
+    tags = models.ManyToManyField("Tag")
+
+    @staticmethod
+    def get_relevant_images():
+        # TODO!
+        return Image.objects.all()
+
     def get_image_data(self):
         return PILImage.open(self.filename)
+
+
+class Tag(models.Model):
+    """
+    Tag of an image
+    """
+    title = models.TextField(max_length=40)
 
 
 class Instruction(models.Model):
@@ -44,6 +58,23 @@ class Instruction(models.Model):
 
         return path
 
+    def copy(self):
+        """
+        :return: A copy of itself
+        """
+        inst = Instruction()
+        inst.image = self.image
+        inst.save()
+
+        # Copy all the drawings
+        for drawing in self.drawing_set.all():
+            # Copy the drawing
+            d = drawing.copy()
+            d.instruction = inst
+            d.save()
+
+        return inst
+
 
 class Drawing(models.Model):
 
@@ -68,4 +99,16 @@ class Drawing(models.Model):
         # Just draw a line for the moment.
         im = ImageDraw.Draw(image)
         im.line((self.x1, self.y1, self.x2, self.y2), fill=128)
+
+    def copy(self):
+        """
+        :return: A copy of the drawing
+        """
+        drawing = Drawing()
+        drawing.shape = self.shape
+        drawing.x1 = self.x1
+        drawing.y1 = self.y1
+        drawing.x2 = self.x2
+        drawing.y2 = self.y2
+        return drawing
 
