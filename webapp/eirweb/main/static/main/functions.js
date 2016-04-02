@@ -46,5 +46,16 @@ function initializeDrawing(backgroundImage) {
 
 // Sends the current instruction to the server.
 function sendInstruction() {
+    var data = lc.getImage().toDataURL()
 
+    $.ajax({
+      type: "POST",
+      url: '/api/instruction/create',
+      data: {
+          instruction: data
+      },
+      success: function() {
+          // ...
+      },
+    });
 }
