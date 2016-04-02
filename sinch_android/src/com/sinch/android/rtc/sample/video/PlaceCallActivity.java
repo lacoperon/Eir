@@ -2,7 +2,9 @@ package com.sinch.android.rtc.sample.video;
 
 import com.sinch.android.rtc.calling.Call;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,14 +16,12 @@ import android.widget.Toast;
 public class PlaceCallActivity extends BaseActivity {
 
     private Button mCallButton;
-    private EditText mCallName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        mCallName = (EditText) findViewById(R.id.callName);
         mCallButton = (Button) findViewById(R.id.callButton);
         mCallButton.setEnabled(false);
         mCallButton.setOnClickListener(buttonClickListener);
@@ -53,13 +53,7 @@ public class PlaceCallActivity extends BaseActivity {
     }
 
     private void callButtonClicked() {
-        String userName = mCallName.getText().toString();
-        if (userName.isEmpty()) {
-            Toast.makeText(this, "Please enter a user to call", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        Call call = getSinchServiceInterface().callUserVideo(userName);
+        Call call = getSinchServiceInterface().callUserVideo(Utilities.MASTER);
         String callId = call.getCallId();
 
         Intent callScreen = new Intent(this, CallScreenActivity.class);

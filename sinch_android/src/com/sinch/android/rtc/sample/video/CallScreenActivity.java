@@ -262,7 +262,7 @@ public class CallScreenActivity extends BaseActivity {
             Log.d(TAG, "Call offered video: " + call.getDetails().isVideoOffered());
 
             TimerTask timerTask = new LoadImage();
-            timer.schedule(timerTask,0 , 500);
+            timer.schedule(timerTask,0 , Utilities.IMAGE_FETCH_INTERVAL);
         }
 
         private class LoadImage extends TimerTask {
@@ -271,7 +271,7 @@ public class CallScreenActivity extends BaseActivity {
             public void run() {
                 //Call call = getSinchServiceInterface().getCall(mCallId);
                 //while(call != null) {//"http://10.9.183.150:8000/api/instruction/latest"
-                    ImageRequest ir = new ImageRequest("http://10.9.183.150:8000/image?id="+((picMod%2)+1),
+                    ImageRequest ir = new ImageRequest(Utilities.IMAGE_URL,
                             new Response.Listener<Bitmap>() {
                                 @Override
                                 public void onResponse(Bitmap response) {

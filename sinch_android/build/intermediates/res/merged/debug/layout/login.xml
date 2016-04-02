@@ -51,4 +51,4 @@
             android:textSize="22sp"
             android:textStyle="bold" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
 
-</RelativeLayout><!-- From: file:/D:/hackathon/sinch_android/res/layout/login.xml -->
+</RelativeLayout><!-- From: file:/D:/Eir/sinch_android/res/layout/login.xml -->

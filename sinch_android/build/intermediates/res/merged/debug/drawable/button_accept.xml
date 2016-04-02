@@ -2,4 +2,4 @@
     <item android:state_pressed="true" android:drawable="@drawable/small_green_pressed"/>
     <item android:state_pressed="false" android:drawable="@drawable/small_green_normal"/>
     <item android:drawable="@drawable/small_green_normal"/>
-</selector><!-- From: file:/D:/hackathon/sinch_android/res/drawable/button_accept.xml -->
+</selector><!-- From: file:/D:/Eir/sinch_android/res/drawable/button_accept.xml -->
