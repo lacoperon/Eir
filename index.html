@@ -31,25 +31,65 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>
-<a id="emergency-integrated-response" class="anchor" href="#emergency-integrated-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Emergency Integrated Response</h1>
+        <h2>
+<a id="inspiration" class="anchor" href="#inspiration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Inspiration</h2>
 
-<p><img src="http://s29.postimg.org/mv04iigqf/rsz_11logo.png" alt="logo"></p>
-
-<p>Emergency Medical Response is not something to take lightly; a few minutes in delayed response time, or a few omitted pieces of crucial information, can tip the balance between life and death to its more tragic end.</p>
-
-<p>Our service, <strong>EIR</strong> (named for the Norse God of medical skill), is designed to augment the traditional <em>911</em> emergency response service, by </p>
+<p><strong>Emergency Medical Response</strong> is <strong>not something to take lightly</strong>; a few minutes in delayed response time, or a few omitted pieces of crucial information, can <strong>tip the balance of life and death</strong> to its more tragic end.
+Our service, <strong>EIR</strong>, is designed to <strong>augment the traditional 911 emergency response model</strong>, by</p>
 
 <ul>
-<li>better informing medical personnel with more detailed descriptors, via video  and geolocation, about exactly where, and what, occurred in an accident.</li>
-<li>providing medical personnel with an easier, more panic-proof way of giving instructions to those at the scene, via our diagrammatic Canvas and a simple text interface.</li>
+<li>Better informing medical personnel with more detailed descriptors, via <strong>Video</strong>, <strong>Graphics</strong>, and <strong>Geolocation</strong>, about exactly where, and what, occurred in an accident.</li>
+<li>Providing medical personnel with an easier, more panic-proof way of giving instructions to those at the scene, via our diagrammatic Canvas and a simple text interface.
+<strong>EIR</strong> helps those in grave medical emergency.  We intuitively aide the <strong>Essential Communication</strong> between <strong>Caller</strong> and <strong>Responder</strong> by opening a line of communication among the person reporting the incident, the emergency dispatcher, and the paramedics via <strong>Graphical</strong>, <strong>Visual</strong>, <strong>Textual</strong> and <strong>Auditory</strong> means.</li>
 </ul>
 
-<p>The application itself consists of an <strong>Android App</strong>, for someone at the scene of an accident to call for help, and a <strong>Web Application</strong>, which is designed for a medical responder to communicate with the caller more effectively than is possible through traditional, voice-only communication in a <em>911</em> call.</p>
+<h2>
+<a id="what-it-does" class="anchor" href="#what-it-does" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What it does</h2>
 
-<p>These two applications communicate through <strong>HTTP GET</strong> requests, communicated to a <strong>Django Server</strong> on the Linode hosting service. Our audio and video calling is implemented through the <strong>Sinch</strong> API, and the Canvas drawing system is implemented through an implementation of <strong>HTML5's Canvas Element</strong>.</p>
+<p><strong>EIR</strong> offers a new way for people in emergency situations to <strong>better communicate</strong> with <strong>Medical Personnel</strong>.</p>
 
-<p>Created as part of <strong>HackPrinceton Spring 2016</strong>.</p>
+<ul>
+<li>Our <strong>Canvas</strong> feature allows emergency responders to <strong>illustrate</strong> critical first aid techniques <strong>quickly</strong> and <strong>clearly</strong>, allowing panicked individuals to see exactly what they need to do, when, and how. </li>
+<li>Our <strong>Messaging</strong> feature allows instructions to be seen in a textual way on the smartphone screen, doing away with the imprecision of memory ubiquitous in times of crisis.</li>
+<li>Our <strong>Video</strong> feature allows <strong>First Responders</strong> to see firsthand the accident in question; the clarity of this picture can be worth a thousand words.</li>
+</ul>
+
+<p>In order to make the process of illustrating complex tasks possible in a very short amount of time, we planned on adding a feature that automatically recommends relevant illustration setups to the emergency responders, so that they can find the right information for the right task in the shortest time possible with minimum manual searches. We were going to implement this feature using IBM's Speech-to-Text API, popularized by the <strong>Watson</strong> machine. This API allows us to predefine a set of indicator keywords that allows the algorithm to quickly classify relevant information.</p>
+
+<p>Our implementation of this last feature was hampered by the difficulty of cloning the <strong>AudioStream</strong> component of a <strong>VideoStream</strong> in Android in real time. Given more time, we will implement this feature, and use it to ensure that <strong>Medical Responders</strong> are reminded of relevant queries they need to know; from this, improved patient outcomes will inevitably result.</p>
+
+<h2>
+<a id="how-we-built-it" class="anchor" href="#how-we-built-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How we built it</h2>
+
+<p>The application itself consists of an <strong>Android App</strong>, for someone at the scene of an accident to call for help, and a <strong>Web Application</strong>, made in <strong>HTML/CSS/JS</strong>, which is designed for a medical responder to communicate with the caller more effectively than is possible through traditional, voice-only communication in a 911 call.</p>
+
+<p>These two applications communicate through <strong>HTTP GET</strong> requests, via a <strong>Django Server</strong> on the <strong>Linode</strong> hosting service. Our audio and video calling is implemented through the <strong>Sinch API</strong>, and the <strong>Canvas</strong> drawing system is implemented through our implementation of <strong>HTML5's Canvas Element</strong> alongside the <strong>Literally Canvas</strong> plugin.</p>
+
+<h2>
+<a id="challenges-we-ran-into" class="anchor" href="#challenges-we-ran-into" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Challenges we ran into</h2>
+
+<p>We ran into some struggles implementing our server on <strong>Linode</strong>, because we had some issues installing the software when it came to that. Additionally, we had troubles implementing our foray into the <strong>IBM's Watson API</strong>, mostly streaming from the fact that we would have been required to separate an audio stream from a video stream on the fly in real time on the Android device.</p>
+
+<h2>
+<a id="accomplishments-that-were-proud-of" class="anchor" href="#accomplishments-that-were-proud-of" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Accomplishments that we're proud of</h2>
+
+<p>We are proud of the fact that we were able to implement two features inexplicably absent from emergency response today: <strong>Graphical Advice Giving</strong> (implemented through the Canvas) and <strong>Video Streaming from the Scene</strong> (implemented through Sinch). We feel that these two additions will have a tangibly beneficial effect on patient outcomes in regards to emergency response.</p>
+
+<p><strong>Socially conscious hacking</strong> is important to us; too often is innovation ignored, at least when it comes to projects with limited revenue potential at first glance. We believe that the tried-and-true Silicon Valley way of tackle old problems with distruptive software solutions should be applied to the public sector for the public good, and we are proud to have followed our beliefs up with action.</p>
+
+<h2>
+<a id="what-we-learned" class="anchor" href="#what-we-learned" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What we learned</h2>
+
+<p>Before this Hackathon, we as a group had very little experience with the <strong>Django</strong> platform, let alone implementing a server on a remote Ubuntu host like <strong>Linode</strong>. This Hackathon allowed us to grow our Back-End skillsets, by getting our hands dirty implementing code directly upon a hosted machine with <strong>root access</strong>.</p>
+
+<h2>
+<a id="whats-next-for-eir" class="anchor" href="#whats-next-for-eir" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What's next for EIR</h2>
+
+<ul>
+<li>Fine tune <strong>Speech-to-Text API</strong> from <strong>IBM</strong>, fixing the <strong>AudioStream</strong> separation issue.</li>
+<li>Implement an <strong>Unsupervised Machine Learning Algorithm</strong> that recommends previously utilized illustrations given specific speech inputs, to speed up the work of the dispatcher and the paramedics</li>
+<li>More Extensive Research on the mechanisms of current EMS system; we will <strong>Iteratively Design</strong> our System to take this research and apply it in the field. </li>
+</ul>
       </section>
     </div>
 
