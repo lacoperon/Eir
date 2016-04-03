@@ -12,5 +12,6 @@ public  class Utilities {
     public static String MY_PREFS = "MYPREFERENCES";
     public static int IMAGE_FETCH_INTERVAL = 500;
     public static int CHAT_FETCH_INTERVAL = 500;
+    public static int AUDIO_RECORD_TIME = 5000;
 
 }

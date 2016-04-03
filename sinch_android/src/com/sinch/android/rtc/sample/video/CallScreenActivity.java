@@ -20,8 +20,10 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
+import android.media.MediaRecorder;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -56,6 +58,8 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
     private boolean mVideoViewsAdded = false;
     private boolean mCalling = false;
     private Context mContext;
+    private MediaRecorder mediaRecorder;
+    private String outputFile = null;
 
     ImageView view ;
     RequestQueue rq;
@@ -98,6 +102,13 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
         mAudioPlayer = new AudioPlayer(this);
         mFragment_container =(FrameLayout)findViewById(R.id.fragment_container);
         manager = getFragmentManager();
+        mediaRecorder = new MediaRecorder();
+        outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/recording.3gp";
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.);
+        mediaRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+        mediaRecorder.setOutputFile(outputFile);
+
         Button endCallButton = (Button) findViewById(R.id.hangupButton);
 
 
@@ -258,6 +269,7 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
                 textFragment.setArguments(getIntent().getExtras());
                 manager.beginTransaction().add(R.id.fragment_container,textFragment).commit();
             }
+
 
 
         }
