@@ -35,10 +35,10 @@ def get_latest_text(request):
     global text_counter
 
     texts = [
-        "I will shortly send you instructions",
+        "I will shortly send you instructions.",
         "Remove his Shirt!",
         "Stop blooding.",
-        "Apply Turnique",
+        "Apply Turnique.",
         "switchVid"
     ]
     response = HttpResponse(texts[text_counter % len(texts)])
