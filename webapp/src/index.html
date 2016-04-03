@@ -52,8 +52,24 @@
         <div id="lc"></div>
       </div>
       <div class="row dispatch">
-          Available Ambulances
-          //TODO: Insert Table
+          <h1>Available Ambulances</h1>
+          <table border="1" cellpadding="5" cellspacing="5">
+<tr>
+<th>Serial Number</th>
+<th>Distance Away</th>
+<th>Dispatch Status?</th>
+</tr>
+<tr>
+<td>T102</td>
+<td>13.01 mi</td>
+<td>Available. Dispatch?</td>
+</tr>
+<tr>
+<td>T774</td>
+<td>29.03 mi</td>
+<td>In Use</td>
+</tr>
+</table>
       </div>
     </div>
 
@@ -62,25 +78,33 @@
         <image class="img_logo" src="eir_logo.png" alt="logo"></image>
       </div>
       <div class="row info">
+        <div class="col-md-3">
         <p>Location: </p>
-        <input type="text"></input>
-      <p>Type: </p>
+        <p>Type: </p>
+        <p>Affected: </p>
+        </div>
+        
+        <div class="col-md-8">
+         <input type="text"></input>
+      
       <input type="text"></input>
-    <p>Number Affected: </p>
+    
     <input type="text"></input>
+        
+        </div>
 
   </div>
-<div class="row notes">
-  <textarea class="hello" rows="10" cols="60"></textarea>
-</div>
-</div>
 
+</div>
 
 <script type="text/javascript">
   $(document).ready(function() {
     initializeDrawing('/api/instruction/latest');
   });
 </script>
+<div class="row hello">
+  <textarea rows="1" cols="1"></textarea>
+</div>
 
 
 </body>
