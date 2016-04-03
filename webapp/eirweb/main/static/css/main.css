@@ -119,3 +119,8 @@ tr:nth-child(even) {background-color: lemonchiffon}
 .literally {
   min-height: 600px;
 }
+
+video {
+  width: 30%;
+  height: 30%;
+}
