@@ -28,11 +28,20 @@ def get_latest_instruction(request):
         red.save(response, "JPEG")
         return response
 
+
+text_counter = 0
+
 def get_latest_text(request):
-    if random.randint(0, 4) == 0:
-        return HttpResponse("switchVid")
-    else:
-        return HttpResponse("You wanted some random shit. Here get it %d times!" % random.randint(1, 100))
+    global text_counter
+
+    texts = [
+        "I will shortly send you instructions",
+        "Remove his Shirt!",
+        "Stop blooding.",
+        "Apply Turnique",
+        "switchVid"
+    ]
+    return HttpResponse(texts[text_counter % len(texts)])
 
 
 def get_image(request):
