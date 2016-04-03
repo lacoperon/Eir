@@ -4,7 +4,7 @@
     <eat-comment/>
     <color name="greyish">#fff2f1f2</color>
     <color name="off_white">#fffafafa</color>
-    <color name="sinch_purple">#ff63029d</color>
+    <color name="sinch_purple">#000</color>
     <!-- From: file:/D:/Eir/sinch_android/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>

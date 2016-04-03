@@ -10,7 +10,7 @@ public  class Utilities {
     public static String SWITCH_MODE_COMM ="switchVid";
     public static String MY_USER_NAME = "MYUSERNAME";
     public static String MY_PREFS = "MYPREFERENCES";
-    public static int IMAGE_FETCH_INTERVAL = 150;
+    public static int IMAGE_FETCH_INTERVAL = 500;
     public static int CHAT_FETCH_INTERVAL = 500;
 
 }

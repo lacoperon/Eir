@@ -49,7 +49,6 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
 
     private AudioPlayer mAudioPlayer;
     private Timer mTimer;
-    private UpdateCallDurationTask mDurationTask;
 
     private String mCallId;
     private long mCallStart = 0;
@@ -58,9 +57,6 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
     private boolean mCalling = false;
     private Context mContext;
 
-    private TextView mCallDuration;
-    private TextView mCallState;
-    private TextView mCallerName;
     ImageView view ;
     RequestQueue rq;
     Timer timer;
@@ -69,7 +65,7 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
 
     @Override
     public void onDataPass(String result) {
-        if (result.equals(Utilities.SWITCH_MODE_COMM) && !isDestroyed())
+        if (result.equals(Utilities.SWITCH_MODE_COMM))
         {
             FragmentTransaction transaction = manager.beginTransaction();
             Log.d("break", "Reached this line");
@@ -80,18 +76,7 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
     }
 
 
-    private class UpdateCallDurationTask extends TimerTask {
 
-        @Override
-        public void run() {
-            CallScreenActivity.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    updateCallDuration();
-                }
-            });
-        }
-    }
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
@@ -111,9 +96,6 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
         setContentView(R.layout.callscreen);
 
         mAudioPlayer = new AudioPlayer(this);
-        mCallDuration = (TextView) findViewById(R.id.callDuration);
-        mCallerName = (TextView) findViewById(R.id.remoteUser);
-        mCallState = (TextView) findViewById(R.id.callState);
         mFragment_container =(FrameLayout)findViewById(R.id.fragment_container);
         manager = getFragmentManager();
         Button endCallButton = (Button) findViewById(R.id.hangupButton);
@@ -162,8 +144,7 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
 
         Call call = getSinchServiceInterface().getCall(mCallId);
         if (call != null) {
-            mCallerName.setText(call.getRemoteUserId());
-            mCallState.setText(call.getState().toString());
+
             if (call.getState() == CallState.ESTABLISHED) {
                 addVideoViews();
               }
@@ -175,8 +156,8 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
     @Override
     public void onStop() {
         super.onStop();
-        mDurationTask.cancel();
-        mTimer.cancel();
+        //mDurationTask.cancel();
+//        mTimer.cancel();
         timer.cancel();
         removeVideoViews();
     }
@@ -184,9 +165,9 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
     @Override
     public void onStart() {
         super.onStart();
-        mTimer = new Timer();
-        mDurationTask = new UpdateCallDurationTask();
-        mTimer.schedule(mDurationTask, 0, 500);
+        //mTimer = new Timer();
+        //mDurationTask = new UpdateCallDurationTask();
+        //mTimer.schedule(mDurationTask, 0, 500);
         view = (ImageView) findViewById(R.id.remoteVideo);
         updateUI();
     }
@@ -210,15 +191,6 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
         long minutes = totalSeconds / 60;
         long seconds = totalSeconds % 60;
         return String.format(Locale.US, "%02d:%02d", minutes, seconds);
-    }
-
-    private void updateCallDuration() {
-        if (mCallStart > 0) {
-            mCallDuration.setText(formatTimespan(System.currentTimeMillis() - mCallStart));
-        }
-
-
-
     }
 
     private void addVideoViews() {
@@ -273,7 +245,7 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
         public void onCallEstablished(Call call) {
             Log.d(TAG, "Call established");
             mAudioPlayer.stopProgressTone();
-            mCallState.setText(call.getState().toString());
+            //mCallState.setText(call.getState().toString());
             setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
             AudioController audioController = getSinchServiceInterface().getAudioController();
             audioController.enableSpeaker();
@@ -290,30 +262,7 @@ public class CallScreenActivity extends BaseActivity implements TextFragment.OnD
 
         }
 
-       /* private class LoadImage extends TimerTask {
 
-            @Override
-            public void run() {
-                //Call call = getSinchServiceInterface().getCall(mCallId);
-                //while(call != null) {//"http://10.9.183.150:8000/api/instruction/latest"
-                    ImageRequest ir = new ImageRequest(Utilities.IMAGE_URL,
-                            new Response.Listener<Bitmap>() {
-                                @Override
-                                public void onResponse(Bitmap response) {
-                                    view.setImageBitmap(response);
-                                }
-                            }, 0, 0, null, null, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.d("app", "error in fetching bitmap");
-                        }
-                    });
-                    rq.add(ir);
-
-               // }
-                Log.d("app", "update image");
-            }
-        }*/
 
         @Override
         public void onCallProgressing(Call call) {
