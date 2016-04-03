@@ -9,3 +9,5 @@ Our service, **EIR**, is designed to augment the traditional _911_ emergency res
 The application itself consists of an **Android App**, for someone at the scene of an accident to call for help, and a **Web Application**, which is designed for a medical responder to communicate with the caller more effectively than is possible through traditional, voice-only communication in a _911_ call.
 
 These two applications communicate through **HTTP GET** requests, communicated to a **Django Server** on the Linode hosting service. Our audio and video calling is implemented through the **Sinch** API, and the Canvas drawing system is implemented through an implementation of **HTML5's Canvas Element**.
+
+Created as part of **HackPrinceton Spring 2016**.
