@@ -25,7 +25,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="ERI"
+        android:label="EIR"
         android:theme="@style/AppTheme" >
         <service android:name=".SinchService" />
 
