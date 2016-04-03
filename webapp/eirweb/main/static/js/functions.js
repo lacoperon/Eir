@@ -73,7 +73,7 @@ function updateImages() {
             for (var i=0; i < data['images'].length; i++) {
                 image = data['images'][i];
                 path = image['path']
-                $('#thumbnails').append('<img src="'+ path +'" width="200px" onclick="initializeDrawing(\''+ path +'\')">')
+                $('#thumbnails').append('<img class="lit-thumbnail" src="'+ path +'&thumbnail=1" onclick="initializeDrawing(\''+ path +'\')">')
             }
 
         },

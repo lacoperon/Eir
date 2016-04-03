@@ -119,3 +119,13 @@ tr:nth-child(even) {background-color: lemonchiffon}
 .literally {
   min-height: 600px;
 }
+
+.lit-thumbnail {
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+  margin: 5px;
+  width: 150px;
+}
