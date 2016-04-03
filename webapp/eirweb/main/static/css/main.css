@@ -129,3 +129,8 @@ tr:nth-child(even) {background-color: lemonchiffon}
   margin: 5px;
   width: 150px;
 }
+
+video {
+  width: 30%;
+  height: 30%;
+}
