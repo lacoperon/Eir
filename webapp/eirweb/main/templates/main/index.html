@@ -1,0 +1,112 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+    <script src="/static/canvas/react-0.14.3.js"></script>
+    <script src="/static/js/sinch.min.js"></script>
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/HTTPReq.js"></script>
+    <script src="/static/js/functions.js"></script>
+    <script src="/static/canvas/literallycanvas.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/main.css" type="text/css">
+    <link href="/static/canvas/literallycanvas.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div>
+      <div class="col-md-4 leftcol">
+        <div class="row video">
+
+
+          <!-- This form is the only thing that is displayed by default -->
+          <form id="authForm">
+            <input type="submit" value="Login" id="login">
+          </form>
+
+          <!-- Hidden until the Sinch client is started successfully -->
+          <div id="sinch" style="display:none;">
+            <form id="callForm">
+              <input type="submit" value="Hangup" id="hangup">
+              <input type="submit" value="Answer" id="answer">
+            </form>
+
+            <!-- Will show updates on the current call -->
+            <div id="status"></div>
+
+            <!-- Will show video streams once call is connected -->
+            <video id="incoming" autoplay></video>
+          </div>
+        </div>
+        <div class="row imageq">
+          <div id="thumbnails">
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-md-5">
+      <div class="row canvas">
+        <div id="lc"></div>
+      </div>
+      <div class="row dispatch">
+          <h1>Available Ambulances</h1>
+          <table border="1" cellpadding="5" cellspacing="5">
+<tr>
+<th>Serial Number</th>
+<th>Distance Away</th>
+<th>Dispatch Status?</th>
+</tr>
+<tr>
+<td>T102</td>
+<td>13.01 mi</td>
+<td>Available. Dispatch?</td>
+</tr>
+<tr>
+<td>T774</td>
+<td>29.03 mi</td>
+<td>In Use</td>
+</tr>
+</table>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="row logo">
+        <image class="img_logo" src="eir_logo.png" alt="logo"></image>
+      </div>
+      <div class="row info">
+        <div class="col-md-3">
+        <p>Location: </p>
+        <p>Type: </p>
+        <p>Affected: </p>
+        </div>
+        
+        <div class="col-md-8">
+         <input type="text"></input>
+      
+      <input type="text"></input>
+    
+    <input type="text"></input>
+        
+        </div>
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    initializeDrawing('/api/instruction/latest');
+  });
+</script>
+<div class="row hello">
+  <textarea rows="1" cols="1"></textarea>
+</div>
+
+
+</body>
+</html>

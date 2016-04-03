@@ -103,5 +103,5 @@ def main_app(request):
     context = {
         'images': Image.get_relevant_images()
     }
-    return TemplateResponse(request, "main/main_app.html", context)
+    return TemplateResponse(request, "main/index.html", context)
 
