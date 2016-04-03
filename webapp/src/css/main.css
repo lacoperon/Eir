@@ -1,42 +1,86 @@
+p {
+  color: white;
+}
+
 .col-md-4 {
   height: 100vh;
 }
 .video{
   height: 50vh;
-  background-color: black;
+  background-color: F7DCB4;
 }
 
 .imageq {
-  background-color: aqua;
+  background-color: F7DCB4;
   height: 50vh;
 }
 
 .canvas{
-  background-color: purple;
-  height: 90vh;
+  /*border: 1px black solid;*/
+  background-color: #A97D5D;
+  height: 80vh;
 }
 
 .dispatch {
-  height: 10vh;
-  background-color: grey;
+  color: black;
+  height: 20vh;
+  background-color: #606060;
+  /*border: 1px black solid;*/
+}
+
+.dispatch p {
+  color: black;
 }
 
 .logo {
   height: 40vh;
-  background-color: white;
+  background-color: #F7DCB4;
+  border-left: 0px black solid;
 }
 .info {
   height:20vh;
-  background-color: burlywood;
+  background-color: #F7DCB4;
+  border-left: 0px black solid;
 }
 
 .notes {
   height: 40vh;
-  background-color: greenyellow;
+  background-color: #F7DCB4;
+  border-left: 0px black solid;
 }
 
 .img_logo {
-  height: 40vh;
-  margin-left: auto;
-  margin-right: auto;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 5%;
+}
+
+.img_cross {
+  width: 80%;
+  margin-left: 6%;
+}
+
+.img_check {
+  width: 100%;
+}
+
+p {
+  margin-left: 10%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+input {
+  margin-left: 10%;
+}
+
+textarea {
+  height: 90%;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 4%;
+}
+
+.text_dispatch {
+  font-size: 5vh;
 }

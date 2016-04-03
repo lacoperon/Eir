@@ -10,27 +10,17 @@ $("document").ready(function() {
 
     var callClient;
     var call;
+  
+    
 
     $("#login").on("click", function (event) {
         event.preventDefault();
         
         var signUpObj = {};
-        signUpObj.username = $("input#username").val();
-        signUpObj.password = $("input#password").val();
+        signUpObj.username = "USERB";
+        signUpObj.password = "testtest";
 
         sinchClient.start(signUpObj, afterStartSinchClient());          
-    });
-
-    $("#signup").on("click", function (event) {
-        event.preventDefault();
-        
-        var signUpObj = {};
-        signUpObj.username = $("input#username").val();
-        signUpObj.password = $("input#password").val();
-
-        sinchClient.newUser(signUpObj, function(ticket) {
-            sinchClient.start(ticket, afterStartSinchClient());
-        });
     });
 
     function afterStartSinchClient() {
