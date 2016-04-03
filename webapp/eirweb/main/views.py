@@ -1,5 +1,6 @@
 from base64 import b64decode
 
+import random
 from PIL import Image as PILImage
 from django.http import HttpResponse, JsonResponse
 from django.template.response import TemplateResponse
@@ -28,7 +29,10 @@ def get_latest_instruction(request):
         return response
 
 def get_latest_text(request):
-    return HttpResponse("switchVid")
+    if random.randint(0, 4) == 0:
+        return HttpResponse("switchVid")
+    else:
+        return HttpResponse("You wanted some random shit. Here get it %d times!" % random.randint(1, 100))
 
 
 def get_image(request):
