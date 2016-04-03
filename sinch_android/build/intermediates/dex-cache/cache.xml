@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jar="C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
-        <dex dex="D:\hackathon\sinch_android\build\intermediates\pre-dexed\debug\library-1.0.19-e0a76a12c89af1ceece02643788c97153f52cdb8.jar" />
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\hackathon\sinch_android\build\intermediates\pre-dexed\debug\picasso-2.5.2-f4e7307f0f9f541fed7ac53fecb65fae55998e05.jar" />
     </item>
     <item
         jar="D:\hackathon\sinch_android\libs\sinch-android-rtc-3.9.3.jar"
@@ -16,11 +16,18 @@
         <dex dex="D:\hackathon\sinch_android\build\intermediates\pre-dexed\debug\sinch-android-rtc-3.9.3-c5d875133a25c3820071ea09c0bbd6bc7d404d2f.jar" />
     </item>
     <item
-        jar="C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jar="C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="D:\hackathon\sinch_android\build\intermediates\pre-dexed\debug\picasso-2.5.2-f4e7307f0f9f541fed7ac53fecb65fae55998e05.jar" />
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="D:\hackathon\sinch_android\build\intermediates\pre-dexed\debug\library-1.0.19-e0a76a12c89af1ceece02643788c97153f52cdb8.jar" />
+    </item>
+    <item
+        jar="D:\Eir\sinch_android\libs\sinch-android-rtc-3.9.3.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="2a34c88d2786ce2c14a6d7ee235a64d4c5310152">
+        <dex dex="D:\Eir\sinch_android\build\intermediates\pre-dexed\debug\sinch-android-rtc-3.9.3-c03741c3b8a89e92242f88d7de8d84d41da54504.jar" />
     </item>
 
 </items>

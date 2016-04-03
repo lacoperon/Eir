@@ -14,6 +14,8 @@ import com.sinch.android.rtc.video.VideoCallListener;
 import com.sinch.android.rtc.video.VideoController;
 import com.squareup.picasso.Picasso;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -24,6 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -38,7 +41,7 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class CallScreenActivity extends BaseActivity {
+public class CallScreenActivity extends BaseActivity implements TextFragment.OnDataPass {
 
     static final String TAG = CallScreenActivity.class.getSimpleName();
     static final String CALL_START_TIME = "callStartTime";
@@ -61,8 +64,21 @@ public class CallScreenActivity extends BaseActivity {
     ImageView view ;
     RequestQueue rq;
     Timer timer;
+    FrameLayout mFragment_container;
+    FragmentManager manager;
 
-    int picMod = 0;
+    @Override
+    public void onDataPass(String result) {
+        if (result.equals(Utilities.SWITCH_MODE_COMM) && !isDestroyed())
+        {
+            FragmentTransaction transaction = manager.beginTransaction();
+            Log.d("break", "Reached this line");
+            transaction.replace(R.id.fragment_container, new ImageFragment());
+            transaction.commit();
+
+        }
+    }
+
 
     private class UpdateCallDurationTask extends TimerTask {
 
@@ -98,7 +114,11 @@ public class CallScreenActivity extends BaseActivity {
         mCallDuration = (TextView) findViewById(R.id.callDuration);
         mCallerName = (TextView) findViewById(R.id.remoteUser);
         mCallState = (TextView) findViewById(R.id.callState);
+        mFragment_container =(FrameLayout)findViewById(R.id.fragment_container);
+        manager = getFragmentManager();
         Button endCallButton = (Button) findViewById(R.id.hangupButton);
+
+
 
         endCallButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -115,6 +135,7 @@ public class CallScreenActivity extends BaseActivity {
         rq = Volley.newRequestQueue(this);
 
         timer = new Timer(true);
+
     }
 
     @Override
@@ -245,8 +266,6 @@ public class CallScreenActivity extends BaseActivity {
             setVolumeControlStream(AudioManager.USE_DEFAULT_STREAM_TYPE);
             String endMsg = "Call ended: " + call.getDetails().toString();
             Toast.makeText(CallScreenActivity.this, endMsg, Toast.LENGTH_LONG).show();
-
-
             endCall();
         }
 
@@ -261,11 +280,17 @@ public class CallScreenActivity extends BaseActivity {
             mCallStart = System.currentTimeMillis();
             Log.d(TAG, "Call offered video: " + call.getDetails().isVideoOffered());
 
-            TimerTask timerTask = new LoadImage();
-            timer.schedule(timerTask,0 , Utilities.IMAGE_FETCH_INTERVAL);
+            if (mFragment_container != null)
+            {
+                TextFragment textFragment = new TextFragment();
+                textFragment.setArguments(getIntent().getExtras());
+                manager.beginTransaction().add(R.id.fragment_container,textFragment).commit();
+            }
+
+
         }
 
-        private class LoadImage extends TimerTask {
+       /* private class LoadImage extends TimerTask {
 
             @Override
             public void run() {
@@ -284,11 +309,11 @@ public class CallScreenActivity extends BaseActivity {
                         }
                     });
                     rq.add(ir);
-                    picMod++;
+
                // }
                 Log.d("app", "update image");
             }
-        }
+        }*/
 
         @Override
         public void onCallProgressing(Call call) {

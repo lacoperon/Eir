@@ -64,9 +64,9 @@
 
         </FrameLayout>
 
-        <ImageView android:id="@+id/remoteVideo" android:layout_width="wrap_content"
+       <!-- <ImageView android:id="@+id/remoteVideo" android:layout_width="wrap_content"
                       android:layout_height="wrap_content" android:layout_alignParentLeft="true"
-                      android:layout_alignParentTop="true" android:orientation="horizontal"/>
+                      android:layout_alignParentTop="true" android:orientation="horizontal"/> -->
 
         <RelativeLayout android:id="@+id/localVideo" android:layout_width="150dp"
                         android:layout_alignParentRight="true" android:layout_height="200dp"

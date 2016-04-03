@@ -3,9 +3,10 @@
     android:layout_height="match_parent"
     tools:context="com.sinch.android.rtc.sample.video.ImageFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView android:id="@+id/remoteVideo" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" android:orientation="horizontal"/>
+
 
 </FrameLayout>
 <!-- From: file:/D:/Eir/sinch_android/res/layout/fragment_image.xml -->
