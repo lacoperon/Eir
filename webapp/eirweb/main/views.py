@@ -28,7 +28,8 @@ def get_latest_instruction(request):
         return response
 
 def get_latest_text(request):
-    pass
+    return HttpResponse("switchVid")
+
 
 def get_image(request):
     id = request.GET.get('id', None)
