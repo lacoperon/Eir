@@ -10,27 +10,17 @@ $("document").ready(function() {
 
     var callClient;
     var call;
+  
+    
 
     $("#login").on("click", function (event) {
         event.preventDefault();
-
+        
         var signUpObj = {};
-        signUpObj.username = $("input#username").val();
-        signUpObj.password = $("input#password").val();
+        signUpObj.username = "USERA";
+        signUpObj.password = "testtest";
 
-        sinchClient.start(signUpObj, afterStartSinchClient());
-    });
-
-    $("#signup").on("click", function (event) {
-        event.preventDefault();
-
-        var signUpObj = {};
-        signUpObj.username = $("input#username").val();
-        signUpObj.password = $("input#password").val();
-
-        sinchClient.newUser(signUpObj, function(ticket) {
-            sinchClient.start(ticket, afterStartSinchClient());
-        });
+        sinchClient.start(signUpObj, afterStartSinchClient());          
     });
 
     function afterStartSinchClient() {
@@ -55,7 +45,7 @@ $("document").ready(function() {
             $("div#status").append("<div>Calling " + usernameToCall + "</div>");
         	call = callClient.callUser(usernameToCall);
         	call.addEventListener(callListeners);
-    	}
+    	}   
     });
 
     $("#answer").click(function(event) {
@@ -98,5 +88,5 @@ $("document").ready(function() {
             $("video#incoming").attr("src", "");
             call = null;
         }
-    }
+    }        
 });

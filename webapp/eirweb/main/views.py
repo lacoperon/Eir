@@ -1,9 +1,12 @@
 from base64 import b64decode
 
+import random
 from PIL import Image as PILImage
 from django.http import HttpResponse, JsonResponse
 from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_exempt
+
+import os
 
 from main.models import Instruction, Image
 
@@ -24,6 +27,12 @@ def get_latest_instruction(request):
         response = HttpResponse(content_type="image/jpeg")
         red.save(response, "JPEG")
         return response
+
+def get_latest_text(request):
+    if random.randint(0, 4) == 0:
+        return HttpResponse("switchVid")
+    else:
+        return HttpResponse("You wanted some random shit. Here get it %d times!" % random.randint(1, 100))
 
 
 def get_image(request):
@@ -79,12 +88,27 @@ def reset(request):
     Instruction.objects.all().delete()
 
 
+def update_images(request):
+    """
+    Rereads the images from
+    :param request:
+    :return:
+    """
+    Image.objects.all().delete()
 
+    files = os.listdir('images')
+    files = [f for f in files if f[-3:] == 'png']
+    for f in files:
+        image = Image()
+        image.filename = 'images/%s' % f
+        image.save()
+
+    return HttpResponse("Update images (Count: %d)" % len(files))
 
 
 def main_app(request):
     context = {
         'images': Image.get_relevant_images()
     }
-    return TemplateResponse(request, "main/main_app.html", context)
+    return TemplateResponse(request, "main/index.html", context)
 
