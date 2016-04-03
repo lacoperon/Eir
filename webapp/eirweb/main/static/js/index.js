@@ -42,7 +42,6 @@ $("document").ready(function() {
         event.preventDefault();
     	if (!call) {
             usernameToCall = $("input#usernameToCall").val()
-            $("div#status").append("<div>Calling " + usernameToCall + "</div>");
         	call = callClient.callUser(usernameToCall);
         	call.addEventListener(callListeners);
     	}   
@@ -51,7 +50,6 @@ $("document").ready(function() {
     $("#answer").click(function(event) {
         event.preventDefault();
         if (call) {
-            $("div#status").append("<div>You answered the call</div>");
         	call.answer();
         }
     });
@@ -59,7 +57,6 @@ $("document").ready(function() {
     $("#hangup").click(function(event) {
         event.preventDefault();
         if (call) {
-            $("div#status").append("<div>You hung up the call</div>");
         	call.hangup();
         	call = null
         }
@@ -75,15 +72,12 @@ $("document").ready(function() {
 
     var callListeners = {
         onCallProgressing: function(call) {
-            $("div#status").append("<div>Ringing</div>");
         },
         onCallEstablished: function(call) {
-            $("div#status").append("<div>Call established</div>");
             $("video#outgoing").attr("src", call.outgoingStreamURL);
             $("video#incoming").attr("src", call.incomingStreamURL);
         },
         onCallEnded: function(call) {
-            $("div#status").append("<div>Call ended</div>");
             $("video#outgoing").attr("src", "");
             $("video#incoming").attr("src", "");
             call = null;
