@@ -41,7 +41,9 @@ def get_latest_text(request):
         "Apply Turnique",
         "switchVid"
     ]
-    return HttpResponse(texts[text_counter % len(texts)])
+    response = HttpResponse(texts[text_counter % len(texts)])
+    text_counter += 1
+    return response
 
 
 def get_image(request):
