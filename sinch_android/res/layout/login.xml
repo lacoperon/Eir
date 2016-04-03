@@ -2,7 +2,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/startbg"
+                android:background="@drawable/logo"
                 android:padding="0dip"
                 tools:context=".LoginActivity">
 
@@ -19,6 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:text="Enter your name"
+                android:textStyle="bold"
                 android:textAllCaps="true"
                 android:id="@+id/textView" android:layout_gravity="center_horizontal"
                 android:textColor="@color/sinch_purple" android:textSize="20sp"/>

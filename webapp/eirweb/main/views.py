@@ -54,6 +54,7 @@ def get_image(request):
         image = Image.objects.get(pk=id)
         with open(image.filename, 'rb') as f:
             return HttpResponse(f.read(), content_type="png")
+            resize_and_crop(image.filename, path, (200, 200))
 
 
 @csrf_exempt
