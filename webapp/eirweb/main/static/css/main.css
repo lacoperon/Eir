@@ -117,5 +117,5 @@ tr:nth-child(odd) {background-color: white}
 tr:nth-child(even) {background-color: lemonchiffon}
 
 .literally {
-  min-height: 650px;
+  min-height: 600px;
 }
