@@ -27,6 +27,8 @@ def get_latest_instruction(request):
         red.save(response, "JPEG")
         return response
 
+def get_latest_text(request):
+    pass
 
 def get_image(request):
     id = request.GET.get('id', None)

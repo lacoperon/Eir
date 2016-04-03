@@ -17,7 +17,7 @@ $("document").ready(function() {
         event.preventDefault();
         
         var signUpObj = {};
-        signUpObj.username = "USERB";
+        signUpObj.username = "USERA";
         signUpObj.password = "testtest";
 
         sinchClient.start(signUpObj, afterStartSinchClient());          

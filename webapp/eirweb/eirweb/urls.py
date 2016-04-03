@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^image', views.get_image),
     url(r'^update-images', views.update_images),
     url(r'^api/instruction/latest', views.get_latest_instruction),
+    url(r'^api/text/latest', view.get_latest_text),
     url(r'^api/instruction/create', views.create_new_instruction),
     url(r'^api/instruction/reset', views.reset),
     url(r'^$', views.main_app),
