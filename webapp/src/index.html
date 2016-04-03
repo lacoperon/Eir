@@ -1,11 +1,17 @@
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+    <script src="canvas/react-0.14.3.js"></script>
     <script src="js/sinch.min.js"></script>
     <script src="js/index.js"></script>
     <script src="js/HTTPReq.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="canvas/literallycanvas.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link href="canvas/literallycanvas.css" rel="stylesheet">
   </head>
 
   <body>
@@ -34,7 +40,8 @@
           </div>
         </div>
         <div class="row imageq">
-          Insert image and question query space here!
+          <div id="thumbnails">
+          </div>
         </div>
       </div>
 
@@ -42,7 +49,7 @@
     </div>
     <div class="col-md-5">
       <div class="row canvas">
-        The place where people who 
+        <div id="lc"></div>
       </div>
       <div class="row dispatch">
           Available Ambulances
@@ -69,6 +76,11 @@
 </div>
 
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    initializeDrawing('/api/instruction/latest');
+  });
+</script>
 
 
 </body>
